@@ -1,11 +1,15 @@
 "use client";
 
-import SplashScreen from "@/components/Splashscreen";
-import { Inter } from "next/font/google";
+// Next
+import localFont from "next/font/local";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+// Components
+import SplashScreen from "@/components/SplashScreen/SplashScreen";
+
+// Font
+const Phonk = localFont({ src: "../public/fonts/PhonkContrast.otf" });
 
 export default function Home() {
   const pathname = usePathname();
@@ -17,17 +21,16 @@ export default function Home() {
       return;
     }
   }, [isLoading]);
+
   return (
     <>
       {isLoading && isHome ? (
         <SplashScreen finishLoading={() => setIsLoading(false)} />
       ) : (
         <main
-          className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className} bg-fukuro-bone`}
+          className={`flex min-h-screen flex-col items-center justify-center p-24 bg-fukuro-bone ${Phonk.className}`}
         >
-          <p className="text-fukuro-blue font-bold">
-            Hello world! This is Fukuro
-          </p>
+          <p className="text-fukuro-blue font-bold text-3xl">fukuro</p>
         </main>
       )}
     </>
