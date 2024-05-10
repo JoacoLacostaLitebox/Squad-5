@@ -1,15 +1,12 @@
 import { Request, Response } from "express";
 import * as awsService from "../services/aws.service";
-import { randomUUID } from "crypto";
 
-const getSignedUrl = async function (req: Request, res: Response) {
-  const { extension } = req.body;
-  const fileName = `${randomUUID()}.${extension}`;
-  const signedUrl = awsService.generateSignedURL();
+const getImageMaterials = async function (req: Request, res: Response) {
+  const detectedMaterials = await awsService.getImageMaterials();
 
-  res.send(signedUrl);
+  res.send(detectedMaterials);
 };
 
 export default {
-  getSignedUrl,
+  getImageMaterials,
 };
