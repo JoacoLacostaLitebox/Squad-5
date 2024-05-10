@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 // Components
 import SplashScreen from "@/components/SplashScreen/SplashScreen";
 import { useAuth } from "@/context/AuthContext";
+import Footer from "@/components/Footer/Footer";
 
 // Font
 const Phonk = localFont({ src: "../public/fonts/PhonkContrast.otf" });
@@ -48,24 +49,30 @@ export default function Home() {
           document.body.style.overflow = 'auto'
           setIsLoading(false)
         }} />
-      ) : (
-        !user ?
-          <>
-            <div style={{ display: "flex", height: '100vh', width: '100%', background: 'red' }}>
-              <p>registrarse</p>
-              <p className="cursor-pointer" onClick={handleSignIn}>
-                Log in
-              </p>
-            </div>
-          </>
-          :
-          <div style={{ display: "flex", height: '100vh', width: '100%', background: 'green', justifyContent: "center", alignContent: "center" }}>
-            <p>Welcome, {user.displayName}</p>
-            <p className="cursor-pointer" onClick={handleSignOut}>
-              Sign out
+      ) : !user ? (
+        <>
+          <div
+            style={{
+              display: "flex",
+              height: "100vh",
+              width: "100%",
+              background: "red",
+            }}
+          >
+            <p>registrarse</p>
+            <p className="cursor-pointer" onClick={handleSignIn}>
+              Log in
             </p>
           </div>
-
+        </>
+      ) : (
+        <div className="flex flex-col h-screen w-screen bg-fukuro-white justify-between align-center">
+          <p>Welcome, {user.displayName}</p>
+          <p className="cursor-pointer" onClick={handleSignOut}>
+            Sign out
+          </p>
+          <Footer />
+        </div>
       )}
     </>
   );
