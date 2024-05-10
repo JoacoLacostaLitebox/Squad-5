@@ -15,6 +15,7 @@ const Phonk = localFont({ src: "../../public/fonts/PhonkContrast.otf" });
 
 const SplashScreen = ({ finishLoading }) => {
   const animate = () => {
+    document.body.style.overflow = 'hidden'
     const loader = anime.timeline({
       complete: () => finishLoading(),
     });

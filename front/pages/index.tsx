@@ -44,7 +44,10 @@ export default function Home() {
   return (
     <>
       {isLoading ? (
-        <SplashScreen finishLoading={() => setIsLoading(false)} />
+        <SplashScreen finishLoading={() => {
+          document.body.style.overflow = 'auto'
+          setIsLoading(false)
+        }} />
       ) : (
         !user ?
           <>
