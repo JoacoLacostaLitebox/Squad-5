@@ -4,8 +4,6 @@ dotenv.config();
 import express, { Request, Response } from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-
-import moviesRouter from "./routes/movies.routes";
 import awsRouter from "./routes/aws.routes";
 
 const app = express();
@@ -19,7 +17,6 @@ app.get("/", (req: Request, res: Response) => {
   return res.send("Health ok");
 });
 
-app.use("/movies", moviesRouter);
 app.use("/aws", awsRouter);
 
 mongoose
