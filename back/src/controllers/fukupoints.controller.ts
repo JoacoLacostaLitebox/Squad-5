@@ -12,7 +12,13 @@ const getUserFukuPoints = async function (req: Request, res: Response) {
     res.json(response)
 };
 
+const getTopFukuPoints = async function (req: Request, res: Response) {
+    const response = await fukuPointsService.getTopFukuPoints()
+    res.json(response)
+}
+
 export default {
     addFukuPoints,
     getUserFukuPoints,
+    getTopFukuPoints,
 };

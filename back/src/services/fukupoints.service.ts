@@ -27,3 +27,11 @@ export const addFukuPoints = async (body: { fukupoints: number, userId: string }
         return { fukupoints }
     }
 }
+
+export const getTopFukuPoints = async (): Promise<{ userId: string, fukupoints: number }[]> => {
+    const allUsers = await FukuPointModel.find().limit(10).sort({ amount: -1 })
+    return allUsers.map((fukupoint) => ({
+        fukupoints: fukupoint.amount,
+        userId: fukupoint.userId
+    }))
+};
