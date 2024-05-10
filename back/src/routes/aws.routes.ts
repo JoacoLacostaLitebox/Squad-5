@@ -6,9 +6,8 @@ import { GenerateSignedURLBody } from "../validations/aws/aws.validations";
 const awsRouter: Router = express.Router();
 
 awsRouter.post(
-  "/getSignedUrl",
-  // validateRequest(GenerateSignedURLBody),
-  awsController.getSignedUrl,
+  "/getImageMaterials",
+  awsController.getImageMaterials,
 );
 
 export default awsRouter;
