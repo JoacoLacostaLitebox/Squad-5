@@ -19,6 +19,7 @@ interface SplashScreenProps {
 
 const SplashScreen = ({ finishLoading }: SplashScreenProps) => {
   const animate = () => {
+    document.body.style.overflow = 'hidden'
     const loader = anime.timeline({
       complete: () => finishLoading(),
     });
