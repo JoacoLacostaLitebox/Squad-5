@@ -5,9 +5,9 @@ import { randomUUID } from "crypto";
 const getSignedUrl = async function (req: Request, res: Response) {
   const { extension } = req.body;
   const fileName = `${randomUUID()}.${extension}`;
-  const signedUrl = awsService.generateSignedURL(fileName, extension);
+  const signedUrl = awsService.generateSignedURL();
 
-  res.json({ signedUrl, fileName });
+  res.send(signedUrl);
 };
 
 export default {
