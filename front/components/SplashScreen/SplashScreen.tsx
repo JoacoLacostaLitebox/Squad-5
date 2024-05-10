@@ -13,7 +13,11 @@ import Texture from "./assets/texture.png";
 // Font
 const Phonk = localFont({ src: "../../public/fonts/PhonkContrast.otf" });
 
-const SplashScreen = ({ finishLoading }) => {
+interface SplashScreenProps {
+  finishLoading: () => void;
+}
+
+const SplashScreen = ({ finishLoading }: SplashScreenProps) => {
   const animate = () => {
     const loader = anime.timeline({
       complete: () => finishLoading(),
