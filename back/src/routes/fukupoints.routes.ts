@@ -6,6 +6,11 @@ import { AddFukuPoints } from "../validations/fukupoints/fukupoints.validations"
 const fukuPointsRouter: Router = express.Router();
 
 
+fukuPointsRouter.get(
+    "/",
+    fukuPointsController.getTopFukuPoints,
+);
+
 fukuPointsRouter.post(
     "/",
     validateRequest(AddFukuPoints),
