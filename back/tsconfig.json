@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./dist",
+		"moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+		"sourceMap": true
+  },
+  "include": ["./api/*.ts", "src/**/*.ts", "src/index.ts"],
+  "exclude": ["node_modules"]
+}
