@@ -1,29 +1,57 @@
-import S3 from "aws-sdk/clients/s3";
+import AWS from "aws-sdk";
 
-const S3Client = new S3({
-  apiVersion: "2006-03-01",
-  accessKeyId: process.env.LITEFLIX_AWS_ACCESS_KEY,
-  secretAccessKey: process.env.LITEFLIX_AWS_SECRET_KEY,
+
+const bucket = 'litehack-bucket' // the bucketname without s3://
+const photo  = 'prueba.jpeg' // the name of file
+
+// const credentials = new AWS.SharedIniFileCredentials({profile: 'mainUser'});
+
+// AWS.config.credentials = credentials;
+// AWS.config.update({region: process.env.AWS_REGION});
+
+const client = new AWS.Rekognition({
+  accessKeyId: process.env.LITEHACK_AWS_ACCESS_KEY,
+  secretAccessKey: process.env.LITEHACK_AWS_SECRET_KEY,
   region: process.env.AWS_REGION,
-  signatureVersion: "v4",
+  apiVersion: '2016-06-27'
 });
 
-export const generateSignedURL = (
-  filename: string,
-  extension: string,
-): string | void => {
-  const s3Params = {
-    Bucket: process.env.S3_BUCKET_NAME,
-    Key: filename,
-    Expires: 60,
-    ContentType: `image/${extension}`,
-    ACL: "public-read",
-  };
-
-  const signedUrl = S3Client.getSignedUrl("putObject", s3Params);
-
-  if (!signedUrl)
-    throw new Error("There was a problem obtaining the signedUrl");
-
-  return signedUrl;
+export const generateSignedURL = async (
+): Promise<any> => {
+  const params = {
+    Image: {
+      S3Object: {
+        Bucket: bucket,
+        Name: photo
+      },
+    },
+    MaxLabels: 10
+  }
+  client.detectLabels(params, function(err, response) {
+    if (err) {
+      console.log(err, err.stack); // if an error occurred
+    } else {
+      console.log(`Detected labels for: ${photo}`)
+      response.Labels?.forEach(label => {
+        console.log(`Label:      ${label.Name}`)
+        console.log(`Confidence: ${label.Confidence}`)
+        console.log("Instances:")
+        label.Instances?.forEach(instance => {
+          let box = instance.BoundingBox
+          console.log("  Bounding box:")
+          console.log(`    Top:        ${box?.Top}`)
+          console.log(`    Left:       ${box?.Left}`)
+          console.log(`    Width:      ${box?.Width}`)
+          console.log(`    Height:     ${box?.Height}`)
+          console.log(`  Confidence: ${instance.Confidence}`)
+        })
+        console.log("Parents:")
+        label.Parents?.forEach(parent => {
+          console.log(`  ${parent.Name}`)
+        })
+        console.log("------------")
+        console.log("")
+      }) // for response.labels
+    } // if
+  });
 };
