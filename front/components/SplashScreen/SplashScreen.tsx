@@ -1,10 +1,18 @@
 "use client";
 
+// Next
+import localFont from "next/font/local";
 import React, { useState, useEffect } from "react";
 import anime from "animejs";
 
+// Assets
+import Decoration from "./assets/decoration.svg";
+import Image from "next/image";
+
+// Font
+const Phonk = localFont({ src: "../../public/fonts/PhonkContrast.otf" });
+
 const SplashScreen = ({ finishLoading }) => {
-  const [isMounted, setIsMounted] = useState(false);
   const animate = () => {
     const loader = anime.timeline({
       complete: () => finishLoading(),
@@ -12,54 +20,59 @@ const SplashScreen = ({ finishLoading }) => {
 
     loader
       .add({
-        targets: "#logo",
+        targets: "#splash",
         delay: 0,
         scale: 1,
-        duration: 500,
+        duration: 700,
         easing: "easeInOutExpo",
       })
       .add({
-        targets: "#logo",
+        targets: "#splash",
         delay: 100,
         scale: 1.25,
-        duration: 500,
+        duration: 700,
         easing: "easeInOutExpo",
       })
       .add({
-        targets: "#logo",
+        targets: "#splash",
         delay: 100,
         scale: 1,
-        duration: 500,
+        duration: 700,
         easing: "easeInOutExpo",
       })
       .add({
-        targets: "#logo",
+        targets: "#splash",
         delay: 100,
         scale: 1.25,
-        duration: 500,
+        duration: 700,
         easing: "easeInOutExpo",
       })
       .add({
-        targets: "#logo",
+        targets: "#splash",
         delay: 100,
         scale: 1,
-        duration: 500,
+        duration: 700,
         easing: "easeInOutExpo",
       });
   };
 
   useEffect(() => {
-    const timeout = setTimeout(() => setIsMounted(true), 10);
     animate();
-    return () => clearTimeout(timeout);
   }, []);
 
   return (
     <div
-      className="flex h-screen w-screen items-center justify-center overflow-hidden bg-fukuro-orange"
-      id="logo"
+      className={`relative flex flex-col h-screen w-screen overflow-hidden items-center justify-center bg-fukuro-orange`}
+      id="splash"
     >
-      {isMounted && <h1 className="text-fukuro-white">SplashScreen</h1>}
+      <h1 className={`${Phonk.className} text-[56px] text-fukuro-bone mb-1/3`}>
+        fukuro
+      </h1>
+      <Image
+        src={Decoration}
+        alt="Fukuro Splashcreen"
+        className="absolute bottom-0 w-full h-fit"
+      />
     </div>
   );
 };
