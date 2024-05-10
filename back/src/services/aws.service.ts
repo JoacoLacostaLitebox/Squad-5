@@ -1,7 +1,6 @@
-import AWS, { AWSError } from "aws-sdk";
+import AWS from "aws-sdk";
 import { MATERIALS } from "../utils/constants";
-import { Request } from "express";
-import { DetectLabelsResponse } from "aws-sdk/clients/rekognition";
+import fs from 'fs'
 
 
 const bucket = 'litehack-bucket' // the bucketname without s3://
@@ -19,17 +18,14 @@ const client = new AWS.Rekognition({
   apiVersion: '2016-06-27'
 });
 
-export const getImageMaterials = async (
-): Promise<string[]> => {
+export const getImageMaterials = async (file: Express.Multer.File): Promise<string[]> => {
+  console.log("🚀 ~ getImageMaterials ~ file:", file)
   return new Promise((resolve, reject) => {
     const detectedMaterials: any[] = [];
-
+    const buffer = fs.readFileSync(file.path)
     const params = {
       Image: {
-        S3Object: {
-          Bucket: bucket,
-          Name: photo
-        },
+        Bytes: buffer,
       },
       MaxLabels: 10
     }
@@ -62,6 +58,7 @@ export const getImageMaterials = async (
             detectedMaterials.push(label.Name)
           }
         })
+        fs.unlinkSync(file.path);
         resolve(detectedMaterials)
       }
     });

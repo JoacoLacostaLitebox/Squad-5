@@ -5,6 +5,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import awsRouter from "./routes/aws.routes";
+import fukuPointsRouter from "./routes/fukupoints.routes";
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/aws", awsRouter);
+app.use('/fukupoints', fukuPointsRouter)
 
 mongoose
   .connect(process.env.DB_CONNECTION_URI!)
