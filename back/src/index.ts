@@ -4,6 +4,7 @@ dotenv.config();
 import express, { Request, Response } from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+
 import awsRouter from "./routes/aws.routes";
 import fukuPointsRouter from "./routes/fukupoints.routes";
 
@@ -12,7 +13,7 @@ const app = express();
 app.use(cors());
 app.use("*", cors());
 
-app.use(express.json());
+app.use(express.json({limit: "50mb"}));
 
 app.get("/", (req: Request, res: Response) => {
   return res.send("Health ok");
