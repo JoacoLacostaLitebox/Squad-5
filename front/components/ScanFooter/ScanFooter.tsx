@@ -10,7 +10,7 @@ interface ScanFooterProps {
 
 const ScanFooter = ({ isDisabled, onCapture, onReverseCamera }: ScanFooterProps) => {
   return(
-    <div className='flex h-40 w-full fixed bottom-0 rounded-tl-2xl rounded-tr-2xl bg-fukuro-full-white items-center justify-around'>
+    <div className='flex h-40 w-full fixed bottom-0 rounded-tl-2xl rounded-tr-2xl bg-fukuro-full-white items-center justify-around  max-w-[450px]'>
       <span className='w-10 h-10 rounded-full bg-fukuro-black' />
       <button className={`flex items-center justify-center ${isDisabled ? 'opacity-30' : ''}`} onClick={onCapture} disabled={isDisabled}>
         <span className='bg-fukuro-orange w-20 h-20 rounded-full opacity-30' />

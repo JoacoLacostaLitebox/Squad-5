@@ -51,10 +51,10 @@ const ScanScreen = ({ onSuccess }: ScanScreenProps) => {
   };
 
   return (
-    <div>
+    <div className="max-w-[450px]">
       <div className="flex h-screen flex-col bg-black">
         {
-          isLoading && <div className="flex absolute z-10 top-0 right-0 left-0 bottom-0 justify-center items-center bg-[#00000080]">
+          isLoading && <div className="flex absolute z-10 top-0 right-0 left-0 bottom-0 justify-center items-center bg-[#00000080]  max-w-[450px]">
             <Search /> </div>
         }
         <div className="absolute inset-0" style={{ height: 'calc(100vh - 148px)' }}>
@@ -68,7 +68,7 @@ const ScanScreen = ({ onSuccess }: ScanScreenProps) => {
                 ? 'user'
                 : facingModeDefault
             }}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0  max-w-[450px] h-full object-cover"
           />
         </div>
         <ScanFooter onCapture={onCapture} onReverseCamera={onClickDifferentCamera} isDisabled={isLoading} />
