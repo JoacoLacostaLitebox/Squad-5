@@ -1,11 +1,18 @@
 // Next
 import Link from "next/link";
+import Image from "next/image";
 import Button from "../Button/Button";
 import React from "react";
 
 // Assets
 import PlusIcon from "@/public/assets/icons/plus.svg";
 import SuccessTitle from "../SuccessTitle/SuccessTitle";
+import CardboardIcon from "@/public/assets/icons/cardboard.svg";
+import PlasticIcon from "@/public/assets/icons/plastic.svg";
+import OrganicIcon from "@/public/assets/icons/organic.svg";
+import PaperIcon from "@/public/assets/icons/paper.svg";
+import MetalIcon from "@/public/assets/icons/metal.svg";
+import GlassIcon from "@/public/assets/icons/glass.svg";
 
 interface SuccessScreenProps {
   scannedItems: any[];
@@ -46,6 +53,25 @@ const SuccessScreen = ({ scannedItems, onLoadMore }: SuccessScreenProps) => {
     }
   };
 
+  const getCurrentItemIcon = (currentItem: string) => {
+    switch (currentItem) {
+      case "Paper":
+        return PaperIcon;
+      case "Glass":
+        return GlassIcon;
+      case "Organic":
+        return OrganicIcon;
+      case "Cardboard":
+        return CardboardIcon;
+      case "Metal":
+        return MetalIcon;
+      case "Plastic":
+        return PlasticIcon;
+      default:
+        return "Producto";
+    }
+  };
+
   const successMessages = [
     getCurrentItemMaterial(currentItem),
     "escaneado",
@@ -55,7 +81,12 @@ const SuccessScreen = ({ scannedItems, onLoadMore }: SuccessScreenProps) => {
   return (
     <div className="flex flex-col items-center">
       <SuccessTitle caption="¡Excelente!" titleLines={successMessages} />
-      <div className="w-full mt-14 animate__animated animate__fadeInDown">
+      <Image
+        src={getCurrentItemIcon(currentItem)}
+        alt="product icon"
+        className="mt-8"
+      />
+      <div className="w-full mt-12 animate__animated animate__fadeInDown">
         <Button
           rightIcon={PlusIcon}
           text="Agregar otro producto"
