@@ -1,0 +1,50 @@
+[
+  {
+    "id": "vicente",
+    "label": "Plaza Vicente López",
+    "address": {
+      "firstLine": "Plaza Vicente López y Planes,",
+      "secondLine": "Montevideo 1301, CABA"
+    }
+  },
+  {
+    "id": "mafalda",
+    "label": "Plaza Mafalda",
+    "address": {
+      "firstLine": "Plaza Mafalda,",
+      "secondLine": "Conde 145, CABA"
+    }
+  },
+  {
+    "id": "palermo",
+    "label": "Palermo",
+    "address": {
+      "firstLine": "Punto Verde Palermo Viejo,",
+      "secondLine": "Malabia y Nicaragua, CABA"
+    }
+  },
+  {
+    "id": "crespo",
+    "label": "Villa Crespo",
+    "address": {
+      "firstLine": "Punto Verde Villa Crespo,",
+      "secondLine": "Antezana 355, CABA"
+    }
+  },
+  {
+    "id": "belgrano",
+    "label": "Belgrano",
+    "address": {
+      "firstLine": "Punto Verde Belgrano,",
+      "secondLine": "Echeverría 2201, CABA"
+    }
+  },
+  {
+    "id": "recoleta",
+    "label": "Recoleta",
+    "address": {
+      "firstLine": "Punto Verde Recoleta,",
+      "secondLine": "Anchorena y José A. Cabrera, CABA"
+    }
+  }
+]

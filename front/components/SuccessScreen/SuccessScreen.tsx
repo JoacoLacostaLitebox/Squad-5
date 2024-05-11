@@ -23,15 +23,15 @@ const SuccessScreen = ({ scannedItems, onLoadMore }: SuccessScreenProps) => {
   return (
     <div className="flex flex-col items-center">
       <SuccessTitle caption="¡Excelente!" titleLines={successMessages} />
-      <div className="w-full mt-14">
+      <div className="w-full mt-14 animate__animated animate__fadeInDown">
         <Button
           rightIcon={PlusIcon}
-          text="Agregar mas productos"
+          text="Agregar otro producto"
           type="primary"
           onClick={onLoadMore}
         />
         <Link href={`/delivery${getItemsQuery()}`}>
-          <Button text="Cerrar bolsa y elegir entrega" />
+        <Button text="Elegir punto de entrega" />
         </Link>
       </div>
     </div>

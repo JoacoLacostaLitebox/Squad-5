@@ -27,9 +27,9 @@ interface HomeScreenProps {
 }
 
 const HomeScreen = ({ user, handleSignOut }: HomeScreenProps) => {
-  const [fukuPoints, setFukuPoints] = useState('');
+  const [fukuPoints, setFukuPoints] = useState("");
   const [loading, setLoading] = useState(false);
-  
+
   const getDisplayName = (user: User) => {
     if (user && user.displayName)
       return `¡Hola, ${user.displayName.split(" ")[0]}!`;
@@ -39,17 +39,19 @@ const HomeScreen = ({ user, handleSignOut }: HomeScreenProps) => {
   useEffect(() => {
     async function fetchData() {
       try {
-        setLoading(true)
-        const response = await fetch(`http://3.16.108.75:3000/fukupoints/${user?.uid}`);
+        setLoading(true);
+        const response = await fetch(
+          `https://xwj4zgn3-3000.brs.devtunnels.ms/fukupoints/${user?.uid}`
+        );
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const jsonData = await response.json();
         setFukuPoints(jsonData?.fukupoints);
-        setLoading(false)
+        setLoading(false);
       } catch (error) {
-        console.error('There was a problem fetching the data:', error);
-        setLoading(false)
+        console.error("There was a problem fetching the data:", error);
+        setLoading(false);
       }
     }
 
@@ -63,7 +65,7 @@ const HomeScreen = ({ user, handleSignOut }: HomeScreenProps) => {
       >
         {getDisplayName(user)}
       </p>
-      <PointsContainer points={fukuPoints} loading={loading}/>
+      <PointsContainer points={fukuPoints} loading={loading} />
       <Link href="/create">
         <Button
           leftIcon={BagIcon}
@@ -71,8 +73,14 @@ const HomeScreen = ({ user, handleSignOut }: HomeScreenProps) => {
           type="primary"
         />
       </Link>
-      <Button onClick={() => { }} leftIcon={HomeIcon} text="Puntos de entrega" />
-      <Button onClick={() => { }} leftIcon={InfoIcon} text="Informacion" />
+      <Link href="/deliveryPoints">
+        <Button
+          onClick={() => {}}
+          leftIcon={HomeIcon}
+          text="Puntos de entrega"
+        />{" "}
+      </Link>
+      <Button onClick={() => {}} leftIcon={InfoIcon} text="Informacion" />
     </BaseLayout>
   );
 };

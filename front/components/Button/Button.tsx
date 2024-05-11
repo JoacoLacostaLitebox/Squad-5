@@ -16,6 +16,7 @@ interface Props {
   rightIcon?: string;
   className?: string;
   type?: "primary" | "secondary";
+  centered?: boolean;
 }
 
 const Button = ({
@@ -25,6 +26,7 @@ const Button = ({
   leftIcon,
   className = "",
   type = "secondary",
+  centered = false,
 }: Props) => {
   return (
     <div
@@ -45,6 +47,8 @@ const Button = ({
           type === "primary" ? "bg-fukuro-bone" : ""
         } w-full py-6 flex items-center ${
           leftIcon ? "justify-start" : "justify-center"
+        } ${
+          centered ? "justify-center" : ""
         }`}
       >
         {leftIcon && (

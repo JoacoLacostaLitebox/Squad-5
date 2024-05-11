@@ -1,9 +1,13 @@
-import React from "react";
-import localFont from "next/font/local";
-import ShoppingBag from "./assets/shopping-bag.svg";
+// Next
 import Image from "next/image";
+import localFont from "next/font/local";
 import { DM_Sans } from "next/font/google";
+import React from "react";
 
+// Assets
+import ShoppingBag from "./assets/shopping-bag.svg";
+
+// Fonts
 const Phonk = localFont({ src: "../../public/fonts/PhonkContrast.otf" });
 const DMSans = DM_Sans({ style: ["normal"], subsets: ["latin"] });
 
@@ -13,6 +17,8 @@ interface Props {
   bagItems?: { itemName: string; itemQuantity: number }[];
   className?: string;
   centered?: boolean;
+  firstLine?: string;
+  secondLine?: string;
 }
 
 const BagInfoComponent = ({
@@ -21,6 +27,8 @@ const BagInfoComponent = ({
   bagItems,
   centered,
   description,
+  firstLine,
+  secondLine
 }: Props) => {
   return (
     <div
@@ -43,7 +51,7 @@ const BagInfoComponent = ({
                   {item.itemQuantity} {item.itemName}
                 </span>
               ))
-            : description}
+            : description ? description : <><div>{firstLine}</div><div>{secondLine}</div></>}
         </div>
         {bagItems && (
           <div className="bg-fukuro-orange px-3 py-2 my-2 rounded-3xl w-fit">
