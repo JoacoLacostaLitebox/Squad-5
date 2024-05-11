@@ -54,7 +54,7 @@ const Info = () => {
           );
         })}
       </div>
-      <Link href="/" className="cursor-pointer">
+      <Link href="/" className="cursor-pointer mb-12">
         <Button text="Comenzar" type="primary" />
       </Link>
     </BaseLayout>
