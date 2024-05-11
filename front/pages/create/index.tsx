@@ -60,9 +60,9 @@ const Create = () => {
         <p className={`${Phonk.className} text-fukuro-orange text-base`}>
           Llenar una bolsa nueva
         </p>
-        <p className={`${Phonk.className} text-fukuro-black text-2xl my-2`}>
+        <h2 className={`${Phonk.className} text-fukuro-black text-2xl my-2`}>
           Antes de empezar te recomendamos
-        </p>
+        </h2>
         <div>
           {recommendations.map((recommendation) => {
             return (
