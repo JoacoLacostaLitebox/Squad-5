@@ -49,8 +49,8 @@ const Delivery = () => {
                   className="w-5 h-5 accent-fukuro-orange"
                 />
                 <label
-                  for={`${point.id}-radio`}
-                  class={`${DMSans.className} text-base text-fukuro-black font-bold`}
+                  htmlFor={`${point.id}-radio`}
+                  className={`${DMSans.className} text-base text-fukuro-black font-bold`}
                 >
                   {point.label}
                 </label>
@@ -66,9 +66,7 @@ const Delivery = () => {
               type="primary"
             />
           </Link>
-          <Button
-            text="Ingresar direccion manualmente"
-          />
+          <Button text="Ingresar direccion manualmente" />
         </div>
       </div>
     </BaseLayout>
