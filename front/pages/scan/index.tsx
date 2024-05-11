@@ -19,6 +19,7 @@ const Scan = () => {
     return (
       <ScanScreen onSuccess={onFinishScan} />
     );
+
   return (
     <BaseLayout noBottomDecoration>
       <SuccessScreen
