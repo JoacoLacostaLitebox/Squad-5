@@ -12,6 +12,7 @@ import Footer from "@/components/Footer/Footer";
 import PointsContainer from "@/components/PointsContainer/PointsContainer";
 import Button from "@/components/Button/Button";
 import ArrowRight from '@/public/assets/arrow-right.svg'
+import LoginScreen from "@/components/LoginScreen/LoginScreen";
 
 // Font
 const Phonk = localFont({ src: "../public/fonts/PhonkContrast.otf" });
@@ -21,7 +22,6 @@ export default function Home() {
   const isHome = pathname === "/";
   const [isLoading, setIsLoading] = useState(isHome);
   const { user, googleSignIn, logOut } = useAuth();
-  const [loading, setLoading] = useState(true);
 
   const handleSignIn = async () => {
     try {
@@ -48,36 +48,20 @@ export default function Home() {
   return (
     <>
       {isLoading ? (
-        <SplashScreen finishLoading={() => {
-          document.body.style.overflow = 'auto'
-          setIsLoading(false)
-        }} />
-      ) : !user ? (
-        <>
-          <div
-            style={{
-              display: "flex",
-              height: "100vh",
-              width: "100%",
-              background: "red",
-            }}
-          >
-            <p>registrarse</p>
-            <p className="cursor-pointer" onClick={handleSignIn}>
-              Log in
-            </p>
-          </div>
-        </>
+        <SplashScreen finishLoading={() => setIsLoading(false)} />
       ) : (
-        <div className="flex flex-col h-screen w-screen bg-fukuro-white justify-between align-center">
-          <p>Welcome, {user.displayName}</p>
-          <p className="cursor-pointer" onClick={handleSignOut}>
-            Sign out
-          </p>
-          <PointsContainer points={374930} />
-          <Footer />
-        </div>
-      )}
+        !user ?
+          <LoginScreen />
+          : (
+            <div className="flex flex-col h-screen w-screen bg-fukuro-white justify-between align-center">
+              <p>Welcome, {user.displayName}</p>
+              <p className="cursor-pointer" onClick={handleSignOut}>
+                Sign out
+              </p>
+              <PointsContainer points={374930} />
+              <Footer />
+            </div>
+          ))}
     </>
   );
 }
