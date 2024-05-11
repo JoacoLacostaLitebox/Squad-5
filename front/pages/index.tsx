@@ -12,6 +12,7 @@ import Footer from "@/components/Footer/Footer";
 import PointsContainer from "@/components/PointsContainer/PointsContainer";
 import Button from "@/components/Button/Button";
 import ArrowRight from '@/public/assets/arrow-right.svg'
+import BottomDecoration from "@/components/BottomDecoration/BottomDecoration";
 
 // Font
 const Phonk = localFont({ src: "../public/fonts/PhonkContrast.otf" });
@@ -76,6 +77,7 @@ export default function Home() {
           </p>
           <PointsContainer points={374930} />
           <Footer />
+          <BottomDecoration />
         </div>
       )}
     </>
