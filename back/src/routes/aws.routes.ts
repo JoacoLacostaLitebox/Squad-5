@@ -12,4 +12,9 @@ awsRouter.post(
   awsController.getImageMaterials,
 );
 
+awsRouter.post(
+  "/getImageMaterialsv2",
+  awsController.getImageMaterialsv2
+)
+
 export default awsRouter;
