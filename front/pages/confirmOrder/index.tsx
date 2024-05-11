@@ -66,7 +66,7 @@ const ConfirmOrder = () => {
         fukupoints,
       };
 
-      let response = await fetch('http://localhost:3000/fukupoints', {
+      let response = await fetch('https://fukuro.litebox.ai/fukupoints', {
         method: "POST", // or 'PUT'
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const ConfirmOrder = () => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      push("/successOrder");
+      push(`/successOrder?deliveryPoint=${deliveryPoint}`);
     } catch (error) {
       console.error("There was a problem fetching the data:", error);
     }

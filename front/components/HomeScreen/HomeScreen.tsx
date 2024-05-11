@@ -42,7 +42,7 @@ const HomeScreen = ({ user, handleSignOut }: HomeScreenProps) => {
         setLoading(true);
         const response = await fetch(
           // TODO - Change API URL
-          `http://3.16.108.75:3000/fukupoints/${user?.uid}`
+          `https://fukuro.litebox.ai/fukupoints/${user?.uid}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");

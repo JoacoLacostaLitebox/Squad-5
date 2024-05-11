@@ -26,7 +26,7 @@ const ScanScreen = ({ onSuccess }: ScanScreenProps) => {
     const imageSrc = webcamRef.current.getScreenshot();
     if (imageSrc) {
       // TODO - Change API URL
-      fetch('http://localhost:3000/aws/getImageMaterialsv2', {
+      fetch('https://fukuro.litebox.ai/aws/getImageMaterialsv2', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
