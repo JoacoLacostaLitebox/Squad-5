@@ -59,7 +59,9 @@ const Delivery = () => {
             href={`/confirmOrder${itemsQuery}&deliveryPoint=${deliveryPoint}`}
             aria-disabled={deliveryPoint === ""}
             tabIndex={deliveryPoint === "" ? -1 : undefined}
-            className={`${deliveryPoint === "" ? "pointer-events-none" : "cursor-pointer"}`}
+            className={`${
+              deliveryPoint === "" ? "pointer-events-none" : "cursor-pointer"
+            }`}
           >
             <Button
               rightIcon={ArrowIcon}
@@ -70,7 +72,6 @@ const Delivery = () => {
               }`}
             />
           </Link>
-          <Button text="Ingresar direccion manualmente" />
         </div>
       </div>
     </BaseLayout>

@@ -26,7 +26,7 @@ const SuccessTitle = ({ caption, titleLines }: SuccessTitleProps) => {
         {titleLines.map((message, index) => (
           <h2
             key={index}
-            className={`${Phonk.className} text-fukuro-blue text-[32px] text-center`}
+            className={`${Phonk.className} text-fukuro-blue text-[26px] text-center`}
           >
             {message}
           </h2>
