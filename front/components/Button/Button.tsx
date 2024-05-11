@@ -29,13 +29,17 @@ const Button = ({
   return (
     <div
       onClick={onClick}
-      className={`relative rounded-md overflow-hidden h-auto ${className}`}
+      className={`relative rounded-md overflow-hidden w-full h-auto ${
+        type === "secondary" ? "border-b border-fukuro-black rounded-none" : ""
+      } ${className}`}
     >
-      {type === 'primary' && <Image
-        src={Texture}
-        alt="texture"
-        className="absolute w-screen h-screen top-0 left-0 mix-blend-multiply opacity-70 z-10"
-      />}
+      {type === "primary" && (
+        <Image
+          src={Texture}
+          alt="texture"
+          className="absolute w-screen h-screen top-0 left-0 mix-blend-multiply opacity-70 z-10"
+        />
+      )}
       <button
         className={`${Phonk.className} ${
           type === "primary" ? "bg-fukuro-bone" : ""

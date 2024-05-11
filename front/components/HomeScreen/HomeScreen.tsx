@@ -45,21 +45,10 @@ const HomeScreen = ({ user, handleSignOut }: HomeScreenProps) => {
           leftIcon={BagIcon}
           text="Llenar una bolsa nueva"
           type="primary"
-          className="w-full"
         />
       </Link>
-      <Button
-        onClick={() => {}}
-        leftIcon={HomeIcon}
-        text="Puntos de entrega"
-        className="w-full border-b border-fukuro-black rounded-none"
-      />
-      <Button
-        onClick={() => {}}
-        leftIcon={InfoIcon}
-        text="Informacion"
-        className="w-full border-b border-fukuro-black rounded-none"
-      />
+      <Button onClick={() => {}} leftIcon={HomeIcon} text="Puntos de entrega" />
+      <Button onClick={() => {}} leftIcon={InfoIcon} text="Informacion" />
     </BaseLayout>
   );
 };
