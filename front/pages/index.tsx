@@ -1,27 +1,27 @@
 "use client";
 
 // Next
-import localFont from "next/font/local";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-// Components
-import SplashScreen from "@/components/SplashScreen/SplashScreen";
+// Context
 import { useAuth } from "@/context/AuthContext";
-import Footer from "@/components/Footer/Footer";
-import PointsContainer from "@/components/PointsContainer/PointsContainer";
-import Button from "@/components/Button/Button";
-import ArrowRight from '@/public/assets/arrow-right.svg'
-import LoginScreen from "@/components/LoginScreen/LoginScreen";
+import { AuthContextProvider } from "@/context/AuthContext";
 
-// Font
-const Phonk = localFont({ src: "../public/fonts/PhonkContrast.otf" });
+// Components
+import LoginScreen from "@/components/LoginScreen/LoginScreen";
+import SplashScreen from "@/components/SplashScreen/SplashScreen";
+
+// Assets
+import HomeScreen from "@/components/HomeScreen/HomeScreen";
 
 export default function Home() {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const [isLoading, setIsLoading] = useState(isHome);
+  
   const { user, googleSignIn, logOut } = useAuth();
+
+  const [isLoading, setIsLoading] = useState(isHome && !user);
 
   const handleSignIn = async () => {
     try {
@@ -46,22 +46,20 @@ export default function Home() {
   }, [isLoading]);
 
   return (
-    <>
+    <AuthContextProvider>
       {isLoading ? (
-        <SplashScreen finishLoading={() => setIsLoading(false)} />
+        <SplashScreen
+          finishLoading={() => {
+            document.body.style.overflowY = "auto";
+            document.body.style.overflowX= "hidden";
+            setIsLoading(false);
+          }}
+        />
+      ) : !user ? (
+        <LoginScreen handleSignIn={handleSignIn} />
       ) : (
-        !user ?
-          <LoginScreen />
-          : (
-            <div className="flex flex-col h-screen w-screen bg-fukuro-white justify-between align-center">
-              <p>Welcome, {user.displayName}</p>
-              <p className="cursor-pointer" onClick={handleSignOut}>
-                Sign out
-              </p>
-              <PointsContainer points={374930} />
-              <Footer />
-            </div>
-          ))}
-    </>
+        <HomeScreen user={user} handleSignOut={handleSignOut} />
+      )}
+    </AuthContextProvider>
   );
 }

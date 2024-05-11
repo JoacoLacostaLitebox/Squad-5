@@ -37,7 +37,8 @@ export const getImageMaterials = async (file: Express.Multer.File): Promise<stri
       } else {
         console.log(`Detected labels for: ${photo}`)
         response.Labels?.forEach(label => {
-          if(MATERIALS.includes(label.Name ?? '')) {
+          const materialType = Object.entries(MATERIALS).filter(([_, value]) => value.includes(label.Name ?? ''))
+          if(materialType.length && !detectedMaterials.includes(materialType[0][0])) {
             console.log(`Label:      ${label.Name}`)
             console.log(`Confidence: ${label.Confidence}`)
             console.log("Instances:")
@@ -55,7 +56,7 @@ export const getImageMaterials = async (file: Express.Multer.File): Promise<stri
               console.log(`  ${parent.Name}`)
             })
             console.log("------------")
-            detectedMaterials.push(label.Name)
+            detectedMaterials.push(materialType[0][0])
           }
         })
         fs.unlinkSync(file.path);
