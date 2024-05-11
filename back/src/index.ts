@@ -21,6 +21,10 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/aws", awsRouter);
 app.use('/fukupoints', fukuPointsRouter)
 
+console.log('a ver si llega aca')
+console.log(process.env.DB_CONNECTION_URI)
+console.log(process.env.PORT)
+
 mongoose
   .connect(process.env.DB_CONNECTION_URI!)
   .then(() => {
