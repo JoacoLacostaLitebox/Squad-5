@@ -16,6 +16,7 @@ import BagIcon from "@/public/assets/icons/shopping-bag.svg";
 import HomeIcon from "@/public/assets/icons/home.svg";
 import InfoIcon from "@/public/assets/icons/info.svg";
 import BaseLayout from "@/components/BaseLayout/BaseLayout";
+import { useEffect, useState } from "react";
 
 // Font
 const DMSans = DM_Sans({ style: ["normal"], subsets: ["latin"] });
@@ -26,11 +27,34 @@ interface HomeScreenProps {
 }
 
 const HomeScreen = ({ user, handleSignOut }: HomeScreenProps) => {
+  const [fukuPoints, setFukuPoints] = useState('');
+  const [loading, setLoading] = useState(false);
+  
   const getDisplayName = (user: User) => {
     if (user && user.displayName)
       return `¡Hola, ${user.displayName.split(" ")[0]}!`;
     return "¡Hola!";
   };
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setLoading(true)
+        const response = await fetch(`http://3.16.108.75:3000/fukupoints/${user?.uid}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const jsonData = await response.json();
+        setFukuPoints(jsonData?.fukupoints);
+        setLoading(false)
+      } catch (error) {
+        console.error('There was a problem fetching the data:', error);
+        setLoading(false)
+      }
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <BaseLayout handleSignOut={handleSignOut}>
@@ -39,7 +63,7 @@ const HomeScreen = ({ user, handleSignOut }: HomeScreenProps) => {
       >
         {getDisplayName(user)}
       </p>
-      <PointsContainer points={374930} />
+      <PointsContainer points={fukuPoints} loading={loading}/>
       <Link href="/create">
         <Button
           leftIcon={BagIcon}
@@ -47,8 +71,8 @@ const HomeScreen = ({ user, handleSignOut }: HomeScreenProps) => {
           type="primary"
         />
       </Link>
-      <Button onClick={() => {}} leftIcon={HomeIcon} text="Puntos de entrega" />
-      <Button onClick={() => {}} leftIcon={InfoIcon} text="Informacion" />
+      <Button onClick={() => { }} leftIcon={HomeIcon} text="Puntos de entrega" />
+      <Button onClick={() => { }} leftIcon={InfoIcon} text="Informacion" />
     </BaseLayout>
   );
 };
