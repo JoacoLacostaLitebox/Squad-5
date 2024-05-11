@@ -14,7 +14,7 @@ const DMSans = DM_Sans({ style: ["normal"], subsets: ["latin"] });
 
 const Footer = () => {
   return (
-    <div className="bg-fukuro-bone w-full h-[148px] rounded-2xl px-6 py-8 flex flex-col gap-4">
+    <div className="bg-fukuro-bone w-full h-[148px] rounded-t-2xl px-6 py-8 flex flex-col gap-4 z-10">
       <p className={`${Phonk.className} text-fukuro-black text-2xl`}>fukuro</p>
       <div className="flex flex-row justify-between align-bottom">
         <div className="flex flex-row gap-[18px]">
