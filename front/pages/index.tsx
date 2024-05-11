@@ -76,7 +76,13 @@ export default function Home() {
           }}
         />
       ) : !user ? (
-        <LoginScreen onClick={handleSignIn} />
+        <div className="flex flex-col h-screen w-screen bg-fukuro-white justify-between">
+          <div className="flex flex-col h-full w-full relative px-6">
+            <LoginScreen onClick={handleSignIn} />
+          </div>
+          <Footer />
+          <BottomDecoration />
+        </div>
       ) : (
         <div className="flex flex-col h-screen w-screen bg-fukuro-white justify-between">
           <div className="flex flex-col h-full w-full relative px-6">
@@ -93,20 +99,20 @@ export default function Home() {
             </p>
             <PointsContainer points={374930} />
             <Button
-              onClick={() => {}}
+              onClick={() => { }}
               leftIcon={BagIcon}
               text="Llenar una bolsa nueva"
               type="primary"
               className="w-full"
             />
             <Button
-              onClick={() => {}}
+              onClick={() => { }}
               leftIcon={HomeIcon}
               text="Puntos de entrega"
               className="w-full border-b border-fukuro-black rounded-none"
             />
             <Button
-              onClick={() => {}}
+              onClick={() => { }}
               leftIcon={InfoIcon}
               text="Informacion"
               className="w-full border-b border-fukuro-black rounded-none"
