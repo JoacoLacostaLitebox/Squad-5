@@ -86,7 +86,8 @@ export const getImageMaterialsv2 = async(image: string) => {
       } else {
         console.log(`Detected labels for: ${photo}`)
         response.Labels?.forEach(label => {
-          // if(MATERIALS.includes(label.Name ?? '')) {
+          const materialType = Object.entries(MATERIALS).filter(([_, value]) => value.includes(label.Name ?? ''))
+          if(materialType.length && !detectedMaterials.includes(materialType[0][0])) {
             console.log(`Label:      ${label.Name}`)
             console.log(`Confidence: ${label.Confidence}`)
             console.log("Instances:")
@@ -104,8 +105,8 @@ export const getImageMaterialsv2 = async(image: string) => {
               console.log(`  ${parent.Name}`)
             })
             console.log("------------")
-            detectedMaterials.push(label.Name)
-          // }
+            detectedMaterials.push(materialType[0][0])
+            }
         })
         resolve(detectedMaterials)
       }
