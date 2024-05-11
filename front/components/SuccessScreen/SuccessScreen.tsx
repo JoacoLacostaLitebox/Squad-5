@@ -13,6 +13,8 @@ interface SuccessScreenProps {
 }
 
 const SuccessScreen = ({ scannedItems, onLoadMore }: SuccessScreenProps) => {
+  const currentItem = scannedItems[scannedItems.length - 1];
+
   const getItemsQuery = () => {
     const results = {
       paper: scannedItems.filter((x) => x === "Paper").length,
@@ -24,7 +26,31 @@ const SuccessScreen = ({ scannedItems, onLoadMore }: SuccessScreenProps) => {
     };
     return `?papel=${results.paper}&glass=${results.glass}&organic=${results.organic}&cardboard=${results.cardboard}&metal=${results.metal}&plastic=${results.plastic}`;
   };
-  const successMessages = ["Producto", "escaneado", "con exito"];
+
+  const getCurrentItemMaterial = (currentItem: string) => {
+    switch (currentItem) {
+      case "Paper":
+        return "Desecho de papel";
+      case "Glass":
+        return "Desecho de vidrio";
+      case "Organic":
+        return "Desecho organico";
+      case "Cardboard":
+        return "Desecho de carton";
+      case "Metal":
+        return "Desecho metalico";
+      case "Plastic":
+        return "Desecho plastico";
+      default:
+        return "Producto";
+    }
+  };
+
+  const successMessages = [
+    getCurrentItemMaterial(currentItem),
+    "escaneado",
+    "correctamente",
+  ];
 
   return (
     <div className="flex flex-col items-center">
