@@ -8,6 +8,10 @@ import { useEffect, useState } from "react";
 // Components
 import SplashScreen from "@/components/SplashScreen/SplashScreen";
 import { useAuth } from "@/context/AuthContext";
+import Footer from "@/components/Footer/Footer";
+import PointsContainer from "@/components/PointsContainer/PointsContainer";
+import Button from "@/components/Button/Button";
+import ArrowRight from '@/public/assets/arrow-right.svg'
 import LoginScreen from "@/components/LoginScreen/LoginScreen";
 
 // Font
@@ -47,24 +51,17 @@ export default function Home() {
         <SplashScreen finishLoading={() => setIsLoading(false)} />
       ) : (
         !user ?
-        <LoginScreen/>
-        /*   <>
-           <div style={{ display: "flex", height: '100vh', width: '100%', background: 'red' }}>
-              <p>registrarse</p>
-              <p className="cursor-pointer" onClick={handleSignIn}>
-                Log in
+          <LoginScreen />
+          : (
+            <div className="flex flex-col h-screen w-screen bg-fukuro-white justify-between align-center">
+              <p>Welcome, {user.displayName}</p>
+              <p className="cursor-pointer" onClick={handleSignOut}>
+                Sign out
               </p>
+              <PointsContainer points={374930} />
+              <Footer />
             </div>
-          </> */
-          :
-          <div style={{ display: "flex", height: '100vh', width: '100%', background: 'green', justifyContent: "center", alignContent: "center" }}>
-            <p>Welcome, {user.displayName}</p>
-            <p className="cursor-pointer" onClick={handleSignOut}>
-              Sign out
-            </p>
-          </div>
-
-      )}
+          ))}
     </>
   );
 }
