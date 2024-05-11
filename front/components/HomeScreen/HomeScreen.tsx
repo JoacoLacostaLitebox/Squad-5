@@ -41,7 +41,8 @@ const HomeScreen = ({ user, handleSignOut }: HomeScreenProps) => {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://xwj4zgn3-3000.brs.devtunnels.ms/fukupoints/${user?.uid}`
+          // TODO - Change API URL
+          `http://3.16.108.75:3000/fukupoints/${user?.uid}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -66,21 +67,26 @@ const HomeScreen = ({ user, handleSignOut }: HomeScreenProps) => {
         {getDisplayName(user)}
       </p>
       <PointsContainer points={fukuPoints} loading={loading} />
-      <Link href="/create">
+      <Link href="/create" className="cursor-pointer">
         <Button
           leftIcon={BagIcon}
-          text="Llenar una bolsa nueva"
+          text="Llenar una nueva bolsa"
           type="primary"
         />
       </Link>
-      <Link href="/deliveryPoints">
+      <Link href="/deliveryPoints" className="cursor-pointer">
         <Button
           onClick={() => {}}
           leftIcon={HomeIcon}
           text="Puntos de entrega"
         />{" "}
       </Link>
-      <Button onClick={() => {}} leftIcon={InfoIcon} text="Informacion" />
+      <Button
+        onClick={() => {}}
+        leftIcon={InfoIcon}
+        text="Informacion"
+        className="cursor-pointer"
+      />
     </BaseLayout>
   );
 };

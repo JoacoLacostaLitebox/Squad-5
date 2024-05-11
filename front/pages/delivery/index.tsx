@@ -59,7 +59,7 @@ const Delivery = () => {
             href={`/confirmOrder${itemsQuery}&deliveryPoint=${deliveryPoint}`}
             aria-disabled={deliveryPoint === ""}
             tabIndex={deliveryPoint === "" ? -1 : undefined}
-            className={`${deliveryPoint === "" ? "pointer-events-none" : ""}`}
+            className={`${deliveryPoint === "" ? "pointer-events-none" : "cursor-pointer"}`}
           >
             <Button
               rightIcon={ArrowIcon}

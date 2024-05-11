@@ -24,34 +24,48 @@ const DMSans = DM_Sans({ style: ["normal"], subsets: ["latin"] });
 
 // Data
 import deliveryPoints from "@/deliveryPoints.json";
-
-// TODO este array deberia ser reemplazado con lo que cargue el usuario
-const mockTrashItems = [
-  { itemName: "Desechos de metal", itemQuantity: 2 },
-  { itemName: "Desechos organicos", itemQuantity: 2 },
-  { itemName: "Desechos de plastico", itemQuantity: 3 },
-  { itemName: "Desechos de vidrio", itemQuantity: 1 },
-];
+import { useState } from "react";
 
 const ConfirmOrder = () => {
   const { user } = useAuth();
   const { push } = useRouter();
+
+  const [paperItems, _setPaperItems] = useState(useSearchParams().get("paper"));
+  const [glassItems, _setGlassItems] = useState(useSearchParams().get("glass"));
+  const [organicItems, _setOrganicItems] = useState(
+    useSearchParams().get("organic")
+  );
+  const [cardboardItems, _setCardboardItems] = useState(
+    useSearchParams().get("cardboard")
+  );
+  const [metalItems, _setMetalItems] = useState(useSearchParams().get("metal"));
+  const [plasticItems, _setPlasticItems] = useState(
+    useSearchParams().get("plastic")
+  );
 
   const deliveryPoint = useSearchParams().get("deliveryPoint");
   const deliveryPointData = deliveryPoints.find(
     (point) => point.id === deliveryPoint
   );
 
+  const trashItems = [
+    { itemName: "Desechos de papel", itemQuantity: Number(paperItems) },
+    { itemName: "Desechos de vidrio", itemQuantity: Number(glassItems) },
+    { itemName: "Desechos orgánicos", itemQuantity: Number(organicItems) },
+    { itemName: "Desechos de cartón", itemQuantity: Number(cardboardItems) },
+    { itemName: "Desechos metálicos", itemQuantity: Number(metalItems) },
+    { itemName: "Desechos plásticos", itemQuantity: Number(plasticItems) },
+  ];
+
+  const fukupoints = trashItems.reduce((acum, el) => acum + el.itemQuantity, 0);
+
   const handleConfirm = async () => {
     try {
       let data = {
         userId: user?.uid,
-        fukupoints: mockTrashItems.reduce(
-          (acum, el) => acum + el.itemQuantity,
-          0
-        ),
+        fukupoints,
       };
-
+      // TODO - Change API URL
       let response = await fetch("http://3.16.108.75:3000/fukupoints", {
         method: "POST", // or 'PUT'
         headers: {
@@ -85,7 +99,8 @@ const ConfirmOrder = () => {
       <div className="flex flex-col gap-4 mb-16 ">
         <BagInfoComponent
           title="Cantidad de elementos"
-          bagItems={mockTrashItems}
+          bagItems={trashItems}
+          fukupoints={fukupoints}
           className="w-full animate__animated animate__backInUp"
         />
         <BagInfoComponent
@@ -94,7 +109,10 @@ const ConfirmOrder = () => {
           secondLine={deliveryPointData?.address.secondLine}
           className="w-full animate__animated animate__backInUp"
         />
-        <Link href={`/successOrder?deliveryPoint=${deliveryPoint}`}>
+        <Link
+          href={`/successOrder?deliveryPoint=${deliveryPoint}`}
+          className="cursor-pointer"
+        >
           <Button
             rightIcon={CheckIcon}
             text="Confirmar y continuar"
@@ -102,7 +120,7 @@ const ConfirmOrder = () => {
             onClick={handleConfirm}
           />
         </Link>
-        <Link href={`/create`}>
+        <Link href={`/create`} className="cursor-pointer">
           <Button text="Reiniciar bolsa" />
         </Link>
       </div>

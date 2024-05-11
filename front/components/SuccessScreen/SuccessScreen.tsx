@@ -14,10 +14,16 @@ interface SuccessScreenProps {
 
 const SuccessScreen = ({ scannedItems, onLoadMore }: SuccessScreenProps) => {
   const getItemsQuery = () => {
-    // TODO Create query using scanned items
-    return "?items=...";
+    const results = {
+      paper: scannedItems.filter((x) => x === "Paper").length,
+      glass: scannedItems.filter((x) => x === "Glass").length,
+      organic: scannedItems.filter((x) => x === "Organic").length,
+      cardboard: scannedItems.filter((x) => x === "Cardboard").length,
+      metal: scannedItems.filter((x) => x === "Metal").length,
+      plastic: scannedItems.filter((x) => x === "Plastic").length,
+    };
+    return `?papel=${results.paper}&glass=${results.glass}&organic=${results.organic}&cardboard=${results.cardboard}&metal=${results.metal}&plastic=${results.plastic}`;
   };
-
   const successMessages = ["Producto", "escaneado", "con exito"];
 
   return (
@@ -29,9 +35,10 @@ const SuccessScreen = ({ scannedItems, onLoadMore }: SuccessScreenProps) => {
           text="Agregar otro producto"
           type="primary"
           onClick={onLoadMore}
+          className="cursor-pointer"
         />
-        <Link href={`/delivery${getItemsQuery()}`}>
-        <Button text="Elegir punto de entrega" />
+        <Link href={`/delivery${getItemsQuery()}`} className="cursor-pointer">
+          <Button text="Elegir punto de entrega" />
         </Link>
       </div>
     </div>

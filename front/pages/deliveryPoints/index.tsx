@@ -21,7 +21,7 @@ const index = () => {
             className="rounded-xl"
           ></iframe>
         </div>
-        <Link href="/">
+        <Link href="/" className="cursor-pointer">
           <Button leftIcon={ArrowIcon} text="Volver al Inicio" centered />
         </Link>
       </div>

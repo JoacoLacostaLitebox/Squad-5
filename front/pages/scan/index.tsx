@@ -1,5 +1,4 @@
 // Next
-import localFont from "next/font/local";
 import React, { useState } from "react";
 import ScanScreen from "../../components/ScanScreen/ScanScreen";
 
@@ -12,7 +11,7 @@ const Scan = () => {
   const [isScanning, setIsScanning] = useState(true);
   
   const onFinishScan = (items: string[]) => {
-    setScannedItems(items);
+    setScannedItems([...scannedItems, items[0]]);
     setIsScanning(false);
   }
 

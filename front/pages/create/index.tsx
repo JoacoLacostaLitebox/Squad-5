@@ -79,14 +79,14 @@ const Create = () => {
           })}
         </div>
         <div className="mt-12">
-          <Link href="/scan">
+          <Link href="/scan" className="cursor-pointer">
             <Button
               rightIcon={ArrowIcon}
               text="Comenzar"
               type="primary"
             />
           </Link>
-          <Link href="/">
+          <Link href="/" className="cursor-pointer">
             <Button text="Volver" />
           </Link>
         </div>

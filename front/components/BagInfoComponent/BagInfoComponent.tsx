@@ -19,6 +19,7 @@ interface Props {
   centered?: boolean;
   firstLine?: string;
   secondLine?: string;
+  fukupoints?: number;
 }
 
 const BagInfoComponent = ({
@@ -28,7 +29,8 @@ const BagInfoComponent = ({
   centered,
   description,
   firstLine,
-  secondLine
+  secondLine,
+  fukupoints,
 }: Props) => {
   return (
     <div
@@ -45,21 +47,42 @@ const BagInfoComponent = ({
             DMSans.className
           }`}
         >
-          {bagItems
-            ? bagItems.map((item, index) => (
-                <span className="my-1 font-light" key={index}>
-                  {item.itemQuantity} {item.itemName}
-                </span>
-              ))
-            : description ? description : <><div>{firstLine}</div><div>{secondLine}</div></>}
+          {bagItems ? (
+            bagItems.map((item, index) => {
+              if (item.itemQuantity > 0)
+                return (
+                  <span className="my-1 font-light" key={index}>
+                    {item.itemName}: {item.itemQuantity}
+                  </span>
+                );
+            })
+          ) : description ? (
+            description
+          ) : (
+            <>
+              <div>{firstLine}</div>
+              <div>{secondLine}</div>
+            </>
+          )}
         </div>
         {bagItems && (
           <div className="bg-fukuro-orange px-3 py-2 my-2 rounded-3xl w-fit">
-            <p className={`${DMSans.className} text-fukuro-white text-[16px]`}>
-              Total {bagItems.reduce((acum, el) => acum + el.itemQuantity, 0)}{" "}
+            <p
+              className={`${DMSans.className} text-fukuro-white text-regular font-bold`}
+            >
+              Total: {bagItems.reduce((acum, el) => acum + el.itemQuantity, 0)}{" "}
               desechos
             </p>
           </div>
+        )}
+        {fukupoints && fukupoints > 0 ? (
+          <p
+            className={`text-fukuro-blue text-xl text-center ${Phonk.className}`}
+          >
+            Ganaste {fukupoints} fukupoints
+          </p>
+        ) : (
+          <></>
         )}
       </div>
       {bagItems && (

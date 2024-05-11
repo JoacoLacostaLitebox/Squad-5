@@ -17,7 +17,9 @@ const DMSans = DM_Sans({ style: ["normal"], subsets: ["latin"] });
 import deliveryPoints from "@/deliveryPoints.json";
 
 const SuccessOrder = () => {
-    const [deliveryPoint, setDeliveryPoint] = useState(useSearchParams().get("deliveryPoint"));
+  const [deliveryPoint, _setDeliveryPoint] = useState(
+    useSearchParams().get("deliveryPoint")
+  );
   const deliveryPointData = deliveryPoints.find(
     (point) => point.id === deliveryPoint
   );
@@ -48,10 +50,10 @@ const SuccessOrder = () => {
         />
       </div>
       <div className="mt-14 mb-16">
-        <Link href="/create">
+        <Link href="/create" className="cursor-pointer">
           <Button text="Cargar otra bolsa" type="primary" />
         </Link>
-        <Link href="/">
+        <Link href="/" className="cursor-pointer">
           <Button text="Volver al Inicio" />
         </Link>
       </div>
