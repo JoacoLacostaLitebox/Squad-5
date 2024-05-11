@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import SplashScreen from "@/components/SplashScreen/SplashScreen";
 import { useAuth } from "@/context/AuthContext";
 import Footer from "@/components/Footer/Footer";
+import Button from "@/components/Button/Button";
+import ArrowRight from '@/public/assets/arrow-right.svg'
 
 // Font
 const Phonk = localFont({ src: "../public/fonts/PhonkContrast.otf" });
