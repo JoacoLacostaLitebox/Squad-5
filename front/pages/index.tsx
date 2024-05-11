@@ -50,7 +50,8 @@ export default function Home() {
       {isLoading ? (
         <SplashScreen
           finishLoading={() => {
-            document.body.style.overflow = "auto";
+            document.body.style.overflowY = "auto";
+            document.body.style.overflowX= "hidden";
             setIsLoading(false);
           }}
         />
