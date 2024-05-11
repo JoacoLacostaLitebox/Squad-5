@@ -14,6 +14,7 @@ const config: Config = {
         'fukuro-white': '#F9F6ED',
         'fukuro-black': '#282828',
         'fukuro-bone': '#F5EDCC',
+        'fukuro-full-white': '#FFFFFF',
       }
     },
   },
