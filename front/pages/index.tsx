@@ -22,7 +22,7 @@ export default function Home() {
   const { user, googleSignIn, logOut } = useAuth();
 
   const [isLoading, setIsLoading] = useState(isHome && !user);
-  
+
   const handleSignIn = async () => {
     try {
       await googleSignIn();
@@ -38,6 +38,12 @@ export default function Home() {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (isLoading) {
+      return;
+    }
+  }, [isLoading]);
 
   return (
     <AuthContextProvider>
