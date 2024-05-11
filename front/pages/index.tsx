@@ -38,6 +38,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(isHome);
   const { user, googleSignIn, logOut } = useAuth();
 
+
   const handleSignIn = async () => {
     try {
       await googleSignIn();
@@ -78,7 +79,7 @@ export default function Home() {
       ) : !user ? (
         <div className="flex flex-col h-screen w-screen bg-fukuro-white justify-between">
           <div className="flex flex-col h-full w-full relative px-6">
-            <LoginScreen onClick={handleSignIn} />
+            <LoginScreen handleSignIn={handleSignIn} />
           </div>
           <Footer />
           <BottomDecoration />
