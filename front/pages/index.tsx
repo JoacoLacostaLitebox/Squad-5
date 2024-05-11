@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import SplashScreen from "@/components/SplashScreen/SplashScreen";
 import { useAuth } from "@/context/AuthContext";
 import Footer from "@/components/Footer/Footer";
+import PointsContainer from "@/components/PointsContainer/PointsContainer";
 
 // Font
 const Phonk = localFont({ src: "../public/fonts/PhonkContrast.otf" });
@@ -71,6 +72,7 @@ export default function Home() {
           <p className="cursor-pointer" onClick={handleSignOut}>
             Sign out
           </p>
+          <PointsContainer points={374930} />
           <Footer />
         </div>
       )}
