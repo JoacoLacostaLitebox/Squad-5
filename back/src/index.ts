@@ -24,8 +24,8 @@ app.use('/fukupoints', fukuPointsRouter)
 mongoose
   .connect(process.env.DB_CONNECTION_URI!)
   .then(() => {
-    app.listen(process.env.PORT, function () {
-      console.log(`Liteflix backend listening on port ${process.env.PORT}!`);
+    app.listen(process.env.PORT || 3000, function () {
+      console.log(`Liteflix backend listening on port ${process.env.PORT || 3000}!`);
     });
   })
   .catch((error) => {
