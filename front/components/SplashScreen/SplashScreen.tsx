@@ -68,7 +68,7 @@ const SplashScreen = ({ finishLoading }: SplashScreenProps) => {
 
   return (
     <div
-      className={`relative flex flex-col h-screen w-screen overflow-hidden items-center justify-center bg-fukuro-orange`}
+      className={`relative flex flex-col h-screen w-screen overflow-hidden items-center justify-center bg-fukuro-orange max-w-[450px]`}
       id="splash"
     >
       <Image

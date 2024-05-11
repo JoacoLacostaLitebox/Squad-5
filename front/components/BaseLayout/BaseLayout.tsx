@@ -22,7 +22,7 @@ const BaseLayout = ({
   noBottomDecoration = false,
 }: BaseLayoutProps) => {
   return (
-    <div className="flex flex-col min-h-screen h-full w-screen bg-fukuro-white justify-between relative">
+    <div className="flex flex-col min-h-screen h-full w-screen bg-fukuro-white justify-between relative max-w-[450px]">
       <div className={`flex flex-col h-full w-full  px-6 ${noBottomDecoration ? '' : 'mb-[200px] pb-[20px]'} `}>
         <div className="flex relative justify-center items-center w-full h-fit mt-8">
           <Branding />
