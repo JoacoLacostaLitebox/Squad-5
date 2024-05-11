@@ -73,7 +73,6 @@ export default function Home() {
           <p className="cursor-pointer" onClick={handleSignOut}>
             Sign out
           </p>
-          <Button text="Comenzar a agregar" onClick={() => console.log('boton')} rightIcon={ArrowRight} />
           <Footer />
         </div>
       )}
