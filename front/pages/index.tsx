@@ -18,10 +18,11 @@ import HomeScreen from "@/components/HomeScreen/HomeScreen";
 export default function Home() {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const [isLoading, setIsLoading] = useState(isHome);
-
+  
   const { user, googleSignIn, logOut } = useAuth();
 
+  const [isLoading, setIsLoading] = useState(isHome && !user);
+  
   const handleSignIn = async () => {
     try {
       await googleSignIn();
@@ -37,12 +38,6 @@ export default function Home() {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    if (isLoading) {
-      return;
-    }
-  }, [isLoading]);
 
   return (
     <AuthContextProvider>
