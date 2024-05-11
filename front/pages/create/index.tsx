@@ -70,7 +70,7 @@ const Create = () => {
                 key={recommendation.id}
                 className="py-6 border-b border-fukuro-black flex flex-row gap-3 items-center"
               >
-                <div className="bg-fukuro-orange/10 min-h-7 min-w-7 justify-center rounded-full flex">
+                <div className="bg-fukuro-orange/10 min-h-7 min-w-7 items-center justify-center rounded-full flex">
                   <Image src={CheckIcon} alt="recommendation" />
                 </div>
                 <div className="w-fit">{recommendation.children}</div>
