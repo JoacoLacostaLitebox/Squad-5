@@ -13,11 +13,16 @@ import LogoutIcon from "@/public/assets/icons/log-out.svg";
 interface BaseLayoutProps {
   handleSignOut?: () => void;
   children: string | JSX.Element | JSX.Element[];
+  noBottomDecoration?: boolean;
 }
 
-const BaseLayout = ({ handleSignOut, children }: BaseLayoutProps) => {
+const BaseLayout = ({
+  handleSignOut,
+  children,
+  noBottomDecoration = false,
+}: BaseLayoutProps) => {
   return (
-    <div className="flex flex-col h-screen w-screen bg-fukuro-white justify-between">
+    <div className="flex flex-col min-h-screen h-full w-screen bg-fukuro-white justify-between">
       <div className="flex flex-col h-full w-full relative px-6">
         <div className="flex relative justify-center items-center w-full h-fit mt-8">
           <Branding />
@@ -30,7 +35,7 @@ const BaseLayout = ({ handleSignOut, children }: BaseLayoutProps) => {
         {children}
       </div>
       <Footer />
-      <BottomDecoration />
+      {noBottomDecoration ? <></> : <BottomDecoration />}
     </div>
   );
 };
