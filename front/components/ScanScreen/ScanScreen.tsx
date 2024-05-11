@@ -2,6 +2,7 @@ import ScanFooter from "@/components/ScanFooter/ScanFooter";
 import React, { useRef, useState } from "react";
 import Webcam from "react-webcam";
 import ModalNonRecyclable from "./ModalNonRecyclable";
+import Search from "../Loading/Search";
 
 enum CameraOptions {
   FRONT = 'front',
@@ -38,10 +39,10 @@ const ScanScreen = ({ onSuccess }: ScanScreenProps) => {
           } else {
             setShowError(true);
           }
-        console.log(response);
-      }).finally(() => {
-        setIsLoading(false);
-      });
+          console.log(response);
+        }).finally(() => {
+          setIsLoading(false);
+        });
     }
   };
 
@@ -49,11 +50,13 @@ const ScanScreen = ({ onSuccess }: ScanScreenProps) => {
     setSelectedCamera(prev => prev === CameraOptions.FRONT ? CameraOptions.BACK : CameraOptions.FRONT)
   };
 
-  console.log(isLoading);
-
   return (
     <div>
-      <div className="flex h-screen flex-col" style={{ background: 'black' }}>
+      <div className="flex h-screen flex-col bg-black">
+        {
+          isLoading && <div className="flex absolute z-10 top-0 right-0 left-0 bottom-0 justify-center items-center bg-[#00000080]">
+            <Search /> </div>
+        }
         <div className="absolute inset-0" style={{ height: 'calc(100vh - 148px)' }}>
           <Webcam
             ref={webcamRef}

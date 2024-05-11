@@ -52,7 +52,7 @@ const ConfirmOrder = () => {
         ),
       };
 
-      let response = await fetch("http://3.16.108.75:3000/fukupoints", {
+      let response = await fetch('http://localhost:3000/fukupoints', {
         method: "POST", // or 'PUT'
         headers: {
           "Content-Type": "application/json",
