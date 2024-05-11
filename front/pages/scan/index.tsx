@@ -1,26 +1,24 @@
 // Next
 import localFont from "next/font/local";
 import React, { useState } from "react";
+import ScanScreen from "../../components/ScanScreen/ScanScreen";
 
 // Components
 import BaseLayout from "@/components/BaseLayout/BaseLayout";
 import SuccessScreen from "@/components/SuccessScreen/SuccessScreen";
 
 const Scan = () => {
-  const [scannedItems, setScannedItems] = useState([]);
+  const [scannedItems, setScannedItems] = useState<string[]>([]);
   const [isScanning, setIsScanning] = useState(true);
+  
+  const onFinishScan = (items: string[]) => {
+    setScannedItems(items);
+    setIsScanning(false);
+  }
 
   if (isScanning)
     return (
-      <div className="relative h-screen w-screen bg-black">
-        <div className="flex items-center justify-center w-full h-[168px] bg-fukuro-white rounded-t-xl absolute bottom-0">
-          <button onClick={() => setIsScanning(false)}>
-            <div className="flex rounded-full w-[72px] h-[72px] bg-fukuro-orange/50 items-center justify-center">
-              <div className="rounded-full w-10 h-10 bg-fukuro-orange"></div>
-            </div>
-          </button>
-        </div>
-      </div>
+      <ScanScreen onSuccess={onFinishScan} />
     );
   return (
     <BaseLayout noBottomDecoration>
