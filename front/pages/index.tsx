@@ -14,6 +14,12 @@ import SplashScreen from "@/components/SplashScreen/SplashScreen";
 
 // Assets
 import HomeScreen from "@/components/HomeScreen/HomeScreen";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Fukuro",
+  description: "Fukuro App",
+};
 
 export default function Home() {
   const pathname = usePathname();
