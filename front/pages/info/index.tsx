@@ -40,12 +40,14 @@ const Info = () => {
                 {step}
               </p>
               {index === 0 && (
-                <div className="bg-fukuro-bone rounded-full py-2 px-3 w-fit h-fit -rotate-[5.4deg] mt-2">
-                  <p
-                    className={`${Mont.className} text-fukuro-blue text-xs text-center font-semibold`}
-                  >
-                    ¡Nuestra tote bag!
-                  </p>
+                <div className="animate__animated animate__swing">
+                  <div className="bg-fukuro-bone rounded-full py-2 px-3 w-fit h-fit -rotate-[5.4deg] mt-2">
+                    <p
+                      className={`${Mont.className} text-fukuro-blue text-xs text-center font-semibold`}
+                    >
+                      ¡Nuestra tote bag!
+                    </p>
+                  </div>
                 </div>
               )}
             </div>
