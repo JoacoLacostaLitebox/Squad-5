@@ -1,23 +1,32 @@
 "use client";
 
 // Next
+import Image from "next/image";
 import localFont from "next/font/local";
 import { DM_Sans } from "next/font/google";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+// Context
+import { useAuth } from "@/context/AuthContext";
+
 // Components
 import SplashScreen from "@/components/SplashScreen/SplashScreen";
-import { useAuth } from "@/context/AuthContext";
 import Footer from "@/components/Footer/Footer";
 import PointsContainer from "@/components/PointsContainer/PointsContainer";
 import Button from "@/components/Button/Button";
-import LogoutIcon from "@/public/assets/icons/log-out.svg";
 import BottomDecoration from "@/components/BottomDecoration/BottomDecoration";
 import LoginScreen from "@/components/LoginScreen/LoginScreen";
 import Branding from "@/components/Branding/Branding";
+
+// Type
 import { User } from "firebase/auth";
-import Image from "next/image";
+
+// Assets
+import LogoutIcon from "@/public/assets/icons/log-out.svg";
+import BagIcon from "@/public/assets/icons/shopping-bag.svg";
+import HomeIcon from "@/public/assets/icons/home.svg";
+import InfoIcon from "@/public/assets/icons/info.svg";
 
 // Font
 const Phonk = localFont({ src: "../public/fonts/PhonkContrast.otf" });
@@ -83,6 +92,25 @@ export default function Home() {
               {getDisplayName(user)}
             </p>
             <PointsContainer points={374930} />
+            <Button
+              onClick={() => {}}
+              leftIcon={BagIcon}
+              text="Llenar una bolsa nueva"
+              type="primary"
+              className="w-full"
+            />
+            <Button
+              onClick={() => {}}
+              leftIcon={HomeIcon}
+              text="Puntos de entrega"
+              className="w-full border-b border-fukuro-black rounded-none"
+            />
+            <Button
+              onClick={() => {}}
+              leftIcon={InfoIcon}
+              text="Informacion"
+              className="w-full border-b border-fukuro-black rounded-none"
+            />
           </div>
           <Footer />
           <BottomDecoration />
