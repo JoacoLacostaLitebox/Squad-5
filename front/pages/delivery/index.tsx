@@ -3,7 +3,7 @@ import Link from "next/link";
 import localFont from "next/font/local";
 import { DM_Sans } from "next/font/google";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 
 // Components
 import Button from "@/components/Button/Button";
@@ -16,17 +16,12 @@ import ArrowIcon from "@/public/assets/icons/arrow-right.svg";
 const Phonk = localFont({ src: "../../public/fonts/PhonkContrast.otf" });
 const DMSans = DM_Sans({ style: ["normal"], subsets: ["latin"] });
 
+// Data
+import deliveryPoints from "@/deliveryPoints.json";
+
 const Delivery = () => {
   const itemsQuery = useRouter().asPath.replace("/delivery", "");
-
-  const deliveryPoints = [
-    { id: "vicente", label: "Plaza Vicente López" },
-    { id: "mafalda", label: "Plaza Mafalda" },
-    { id: "palermo", label: "Palermo" },
-    { id: "crespo", label: "Villa Crespo" },
-    { id: "belgrano", label: "Belgrano" },
-    { id: "recoleta", label: "Recoleta" },
-  ];
+  const [deliveryPoint, setDeliveryPoint] = useState("");
 
   return (
     <BaseLayout noBottomDecoration>
@@ -44,9 +39,10 @@ const Delivery = () => {
                 <input
                   id={`${point.id}-radio`}
                   type="radio"
-                  value=""
+                  value={deliveryPoint}
                   name="colored-radio"
                   className="w-5 h-5 accent-fukuro-orange"
+                  onClick={() => setDeliveryPoint(point.id)}
                 />
                 <label
                   htmlFor={`${point.id}-radio`}
@@ -59,10 +55,12 @@ const Delivery = () => {
           })}
         </div>
         <div className="mt-6">
-          <Link href={`/confirmOrder${itemsQuery}`}>
+          <Link
+            href={`/confirmOrder${itemsQuery}&deliveryPoint=${deliveryPoint}`}
+          >
             <Button
               rightIcon={ArrowIcon}
-              text="Confirmar y continuar"
+              text="Continuar"
               type="primary"
             />
           </Link>

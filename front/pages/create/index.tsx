@@ -82,7 +82,7 @@ const Create = () => {
           <Link href="/scan">
             <Button
               rightIcon={ArrowIcon}
-              text="Comenzar a agregar"
+              text="Comenzar"
               type="primary"
             />
           </Link>

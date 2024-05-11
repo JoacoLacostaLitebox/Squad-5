@@ -26,12 +26,12 @@ const SuccessScreen = ({ scannedItems, onLoadMore }: SuccessScreenProps) => {
       <div className="w-full mt-14">
         <Button
           rightIcon={PlusIcon}
-          text="Agregar mas productos"
+          text="Agregar otro producto"
           type="primary"
           onClick={onLoadMore}
         />
         <Link href={`/delivery${getItemsQuery()}`}>
-          <Button text="Cerrar bolsa y elegir entrega" />
+        <Button text="Elegir punto de entrega" />
         </Link>
       </div>
     </div>
