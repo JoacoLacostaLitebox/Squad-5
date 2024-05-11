@@ -19,7 +19,7 @@ interface SplashScreenProps {
 
 const SplashScreen = ({ finishLoading }: SplashScreenProps) => {
   const animate = () => {
-    document.body.style.overflow = 'hidden'
+    document.body.style.overflow = "hidden";
     const loader = anime.timeline({
       complete: () => finishLoading(),
     });
@@ -28,38 +28,17 @@ const SplashScreen = ({ finishLoading }: SplashScreenProps) => {
       .add({
         targets: "#splash",
         delay: 0,
-        scale: 1,
-        duration: 700,
-        easing: "easeInOutExpo",
-      })
-      .add({
-        targets: "#splash",
-        delay: 100,
         scale: 1.25,
-        duration: 700,
+        duration: 1000,
         easing: "easeInOutExpo",
       })
       .add({
         targets: "#splash",
-        delay: 100,
+        delay: 350,
         scale: 1,
-        duration: 700,
+        duration: 1000,
         easing: "easeInOutExpo",
       })
-      .add({
-        targets: "#splash",
-        delay: 100,
-        scale: 1.25,
-        duration: 700,
-        easing: "easeInOutExpo",
-      })
-      .add({
-        targets: "#splash",
-        delay: 100,
-        scale: 1,
-        duration: 700,
-        easing: "easeInOutExpo",
-      });
   };
 
   useEffect(() => {
@@ -69,20 +48,22 @@ const SplashScreen = ({ finishLoading }: SplashScreenProps) => {
   return (
     <div
       className={`relative flex flex-col h-screen w-screen overflow-hidden items-center justify-center bg-fukuro-orange max-w-[450px]`}
-      id="splash"
     >
       <Image
         src={Texture}
         alt="texture"
         className="absolute w-screen h-screen top-0 left-0 mix-blend-multiply opacity-70 z-10"
       />
-      <h1 className={`${Phonk.className} text-[56px] text-fukuro-bone mb-1/3 pb-[200px]`}>
+      <h1
+        className={`${Phonk.className} text-[56px] text-fukuro-bone mb-1/3 pb-[200px]`}
+        id="splash"
+      >
         fukuro
       </h1>
       <Image
         src={Decoration}
         alt="Fukuro Splashcreen"
-        className="absolute bottom-0 w-full h-fit pt-5"
+        className="absolute bottom-0 w-full h-fit pt-5 animate__animated animate__fadeInUp"
       />
     </div>
   );

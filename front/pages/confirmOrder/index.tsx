@@ -77,22 +77,22 @@ const ConfirmOrder = () => {
           Confirmar el contenido de tu bolsa
         </h2>
         <Image
-          className="absolute -right-6 -z-10"
+          className="absolute -right-6 -z-10 animate__animated animate__rollIn"
           src={SemiCircle}
           alt="semi circle image"
         />
       </div>
-      <div className="flex flex-col gap-4 mb-16">
+      <div className="flex flex-col gap-4 mb-16 ">
         <BagInfoComponent
           title="Cantidad de elementos"
           bagItems={mockTrashItems}
-          className="w-full"
+          className="w-full animate__animated animate__backInUp"
         />
         <BagInfoComponent
           title="Punto de entrega"
           firstLine={deliveryPointData?.address.firstLine}
           secondLine={deliveryPointData?.address.secondLine}
-          className="w-full"
+          className="w-full animate__animated animate__backInUp"
         />
         <Link href={`/successOrder?deliveryPoint=${deliveryPoint}`}>
           <Button

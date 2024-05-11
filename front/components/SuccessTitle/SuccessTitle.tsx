@@ -14,7 +14,7 @@ interface SuccessTitleProps {
 
 const SuccessTitle = ({ caption, titleLines }: SuccessTitleProps) => {
   return (
-    <>
+    <div className="flex flex-col items-center animate__animated animate__backInUp">
       <div className="bg-fukuro-bone rounded-full py-2 px-3 w-fit h-fit -rotate-[5.4deg] mt-[78px] mb-4">
         <p
           className={`${Mont.className} text-fukuro-blue text-sm text-center font-semibold`}
@@ -32,7 +32,7 @@ const SuccessTitle = ({ caption, titleLines }: SuccessTitleProps) => {
           </h2>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

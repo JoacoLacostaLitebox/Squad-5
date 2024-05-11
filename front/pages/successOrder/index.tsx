@@ -34,7 +34,7 @@ const SuccessOrder = () => {
       <div className="flex flex-col items-center">
         <SuccessTitle caption="¡Felicitaciones!" titleLines={successMessages} />
         <p
-          className={`${DMSans.className} text-fukuro-black font-regular text-center mt-4`}
+          className={`${DMSans.className} text-fukuro-black font-regular text-center mt-4 animate__animated animate__fadeInDown`}
         >
           Acercate al punto de entrega elegido para dejar tus productos
           desechables y escaneá tu bolsa para sumar puntos.

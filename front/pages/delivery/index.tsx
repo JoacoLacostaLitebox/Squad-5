@@ -33,7 +33,7 @@ const Delivery = () => {
           {deliveryPoints.map((point) => {
             return (
               <div
-                className="flex flex-row-reverse w-full justify-between items-center py-4 border-b border-fukuro-black last:border-none"
+                className="flex flex-row-reverse w-full justify-between items-center py-4 border-b border-fukuro-black last:border-none animate__animated animate__fadeIn"
                 key={point.id}
               >
                 <input
@@ -57,11 +57,17 @@ const Delivery = () => {
         <div className="mt-6">
           <Link
             href={`/confirmOrder${itemsQuery}&deliveryPoint=${deliveryPoint}`}
+            aria-disabled={deliveryPoint === ""}
+            tabIndex={deliveryPoint === "" ? -1 : undefined}
+            className={`${deliveryPoint === "" ? "pointer-events-none" : ""}`}
           >
             <Button
               rightIcon={ArrowIcon}
               text="Continuar"
               type="primary"
+              className={`${
+                deliveryPoint === "" ? "opacity-40" : "opacity-100"
+              }`}
             />
           </Link>
           <Button text="Ingresar direccion manualmente" />
