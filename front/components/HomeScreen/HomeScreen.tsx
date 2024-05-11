@@ -81,12 +81,14 @@ const HomeScreen = ({ user, handleSignOut }: HomeScreenProps) => {
           text="Puntos de entrega"
         />{" "}
       </Link>
-      <Button
-        onClick={() => {}}
-        leftIcon={InfoIcon}
-        text="Informacion"
-        className="cursor-pointer"
-      />
+      <Link href="/info" className="cursor-pointer">
+        <Button
+          onClick={() => {}}
+          leftIcon={InfoIcon}
+          text="Tips para reciclar"
+          className="cursor-pointer"
+        />
+      </Link>
     </BaseLayout>
   );
 };
