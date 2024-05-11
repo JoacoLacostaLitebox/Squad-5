@@ -1,6 +1,9 @@
+// Next
 import localFont from "next/font/local";
 import Image from "next/image";
 import React from "react";
+
+// Assets
 import Texture from "@/public/assets/texture.png";
 
 // Font
@@ -8,7 +11,7 @@ const Phonk = localFont({ src: "../../public/fonts/PhonkContrast.otf" });
 
 interface Props {
   text: string;
-  onClick: () => void;
+  onClick?: () => void;
   leftIcon?: string;
   rightIcon?: string;
   className?: string;
