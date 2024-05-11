@@ -21,15 +21,11 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/aws", awsRouter);
 app.use('/fukupoints', fukuPointsRouter)
 
-console.log('a ver si llega aca')
-console.log(process.env.DB_CONNECTION_URI)
-console.log(process.env.PORT)
-
 mongoose
   .connect(process.env.DB_CONNECTION_URI!)
   .then(() => {
-    app.listen(process.env.PORT || 3000, function () {
-      console.log(`Liteflix backend listening on port ${process.env.PORT || 3000}!`);
+    app.listen(process.env.PORT, function () {
+      console.log(`Liteflix backend listening on port ${process.env.PORT}!`);
     });
   })
   .catch((error) => {
