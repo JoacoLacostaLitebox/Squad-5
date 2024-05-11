@@ -18,9 +18,10 @@ import HomeScreen from "@/components/HomeScreen/HomeScreen";
 export default function Home() {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const [isLoading, setIsLoading] = useState(isHome);
-
+  
   const { user, googleSignIn, logOut } = useAuth();
+
+  const [isLoading, setIsLoading] = useState(isHome && !user);
 
   const handleSignIn = async () => {
     try {
@@ -49,7 +50,8 @@ export default function Home() {
       {isLoading ? (
         <SplashScreen
           finishLoading={() => {
-            document.body.style.overflow = "auto";
+            document.body.style.overflowY = "auto";
+            document.body.style.overflowX= "hidden";
             setIsLoading(false);
           }}
         />

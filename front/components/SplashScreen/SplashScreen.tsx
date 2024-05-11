@@ -76,13 +76,13 @@ const SplashScreen = ({ finishLoading }: SplashScreenProps) => {
         alt="texture"
         className="absolute w-screen h-screen top-0 left-0 mix-blend-multiply opacity-70 z-10"
       />
-      <h1 className={`${Phonk.className} text-[56px] text-fukuro-bone mb-1/3`}>
+      <h1 className={`${Phonk.className} text-[56px] text-fukuro-bone mb-1/3 pb-[200px]`}>
         fukuro
       </h1>
       <Image
         src={Decoration}
         alt="Fukuro Splashcreen"
-        className="absolute bottom-0 w-full h-fit"
+        className="absolute bottom-0 w-full h-fit pt-5"
       />
     </div>
   );
